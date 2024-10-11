@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+
+<div class="jumbotron centered">
+  <div class="container">
+    <i class="fas fa-key fa-6x"></i>
+    <h1 class="display-3">ADMIN DASHBOARD</h1>
+    <hr>
+    <h2>Tagged Assignments</h2>
+
+    <% if (typeof submissions !== "undefined" && submissions.length > 0) { %>
+      <ul>
+        <% submissions.forEach(submission => { %>
+          <li>
+            <p><strong>Student:</strong> <%= submission.studentId.email %></p>
+            <p><strong>Data:</strong> <%= JSON.stringify(submission.data) %></p>
+            <p><strong>Status:</strong> <%= submission.status %></p>
+
+            <% if (submission.status === "pending") { %>
+              <form action="/admin/accept" method="post" style="display: inline;">
+                <input type="hidden" name="submissionId" value="<%= submission._id %>">
+                <button type="submit" class="btn btn-success">Accept</button>
+              </form>
+
+              <form action="/admin/reject" method="post" style="display: inline;">
+                <input type="hidden" name="submissionId" value="<%= submission._id %>">
+                <button type="submit" class="btn btn-danger">Reject</button>
+              </form>
+            <% } else { %>
+              <p><strong>Action:</strong> <%= submission.status %></p>
+            <% } %>
+          </li>
+        <% }) %>
+      </ul>
+      <hr>
+      <a class="btn btn-light btn-lg" href="/logout" role="button">Log Out</a>
+    <% } else { %>
+      <p>No assignments tagged for you.</p>
+      <hr>
+      <a class="btn btn-light btn-lg" href="/logout" role="button">Log Out</a>
+    <% } %>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

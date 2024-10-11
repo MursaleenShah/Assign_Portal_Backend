@@ -1,0 +1,56 @@
+<%- include('partials/header') %>
+<div class="container">
+  <div class="jumbotron text-center">
+    <i class="fas fa-key fa-6x"></i>
+    <h1 class="display-3">SubmitNow</h1>
+    <p class="lead">Draft your assignment directly into the text box below.</p>
+
+    <form action="/submit" method="POST">
+
+      <!-- JSON Data Input -->
+      <div class="form-group">
+        <label for="data" class="secret-text">Submit JSON Data:</label>
+        <textarea class="form-control text-center" name="data" rows="4" placeholder='{"key": "value"}' required></textarea>
+      </div>
+
+      <!-- Admin Tag Selection -->
+      <div class="form-group">
+        <label for="admin" class="secret-text">Tag Admin:</label>
+        <select class="form-control text-center" name="adminId" required>
+          <% admins.forEach(admin => { %>
+            <option value="<%= admin._id %>"><%= admin.email %></option>
+          <% }) %>
+        </select>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-dark">Submit</button>
+      
+    </form>
+  </div>
+</div>
+
+
+
+<!-- <div class="container">
+
+  <div class="jumbotron centered">
+    <i class="fas fa-key fa-6x"></i>
+    <h1 class="display-3">SubmitNow</h1>
+    <p class="secret-text">Draft your assignment directly into the text box below.</p>
+
+    <form action="/submit" method="POST">
+
+      <div class="form-group">
+        <input type="text" class="form-control text-center" name="secret" placeholder="type?">
+      </div>
+      <button type="submit" class="btn btn-dark">Submit</button>
+    </form>
+
+
+  </div>
+</div> -->
+
+
+<%- include('partials/footer') %>
+
