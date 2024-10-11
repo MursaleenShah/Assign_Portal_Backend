@@ -46,11 +46,11 @@ Make sure you have a MongoDB database set up. You can use MongoDB Atlas or a loc
 3. Accept or reject submissions using the provided options.
 
 # Dependencies
-. dotenv: For environment variable management.
-. express: For creating the web server.
-. ejs: For server-side rendering of views.
-. body-parser: For parsing form data.
-. mongoose: For connecting and interacting with MongoDB.
-. bcrypt: For hashing user passwords.
-. express-session: For handling user sessions.
+1. dotenv: For environment variable management.
+2. express: For creating the web server.
+3. ejs: For server-side rendering of views.
+4. body-parser: For parsing form data.
+5. mongoose: For connecting and interacting with MongoDB.
+6. bcrypt: For hashing user passwords.
+7. express-session: For handling user sessions.
 
